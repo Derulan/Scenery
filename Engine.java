@@ -21,7 +21,7 @@ public class Engine
             {
                 Ray ray = new Ray(new Vector3(x-width/2+.5, y-height/2+.5, 200.0), new Vector3(0.0, 0.0, -1.0));
                 Intersection hit = sphere.hit(ray);
-                Intersection hit2 = sphere2.hit(ray);
+                Intersection hit2 = null;
                 int correct = 0;
                 int correct2 = 0;
 
@@ -59,5 +59,6 @@ public class Engine
         {
             System.out.println("Could not write to buffer");
         }
+        System.out.println("Main finished rendering.");
     }
 }

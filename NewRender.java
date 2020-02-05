@@ -23,14 +23,24 @@ public class NewRender
             Renderer thisRenderer = obj.GetComponent(Renderer.class);
             if(thisRenderer != null) renderers.add(thisRenderer);
         }
-
-
+        
+        ArrayList<Double> depthMap = null;
+        ArrayList<Intersection> allI = null;
 
         for(int x = 0; x < width; x++)
         {
             for(int y = 0; y < height; y++)
             {
-                //Collections.sort()
+                Ray ray = new Ray(new Vector3(x-width/2+.5, y-height/2+.5, 200.0), new Vector3(0.0, 0.0, -1.0));
+                depthMap = new ArrayList<Double>();
+                allI = new ArrayList<Intersection>();
+                for(Renderer thisRenderer : renderers)
+                {
+                    Intersection thisIntersection = thisRenderer.hit(ray);
+                    if(thisIntersection != null) allI.add(thisIntersection);
+                }
+                for(Intersection intersection : allI) depthMap.add(intersection.t);
+                Collections.sort(depthMap);
             }
         }
         try

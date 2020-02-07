@@ -33,6 +33,7 @@ public class SceneObject
         try
         {
             T component = type.getDeclaredConstructor().newInstance();
+            component.sceneObject = this;
             this.components.add(component);
             return component;
         }

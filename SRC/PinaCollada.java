@@ -12,7 +12,7 @@ public class PinaCollada
 
     private static boolean singleton = true;
 
-    private static String directory = PathCombine(new String[]{"..", "Assets"}); 
+    private static String directory = "Assets";
 
     public static HashMap<String, Mesh> imported_meshes;
 

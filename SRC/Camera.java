@@ -7,6 +7,8 @@ public class Camera extends Component
 {
     private int width;
     private int height;
+    private int viewPlaneScalar;
+    private double viewPlaneDistance;
     private BufferedImage buffer;
 
     public Camera()
@@ -30,6 +32,7 @@ public class Camera extends Component
 
     public BufferedImage render()
     {
+        Vector3 position = this.sceneObject.transform.position();
         Scene local = this.sceneObject.scene;
         ArrayList<Renderer> renderers = new ArrayList<Renderer>();
         for(SceneObject obj : local.sceneObjects)
@@ -44,7 +47,7 @@ public class Camera extends Component
         {
             for(int y = 0; y < this.height; y++)
             {
-                Ray ray = new Ray(new Vector3(x-this.width/2+.5, y-this.height/2+.5, 200.0), new Vector3(0.0, 0.0, -1.0));
+                Ray ray = new Ray(new Vector3(position.x+(x-this.width/2+.5), position.y+(y-this.height/2+.5), position.z), new Vector3(0.0, 0.0, -1.0));
                 Color shade = null;
                 Method fragment = null;
                 intersections = new ArrayList<Intersection>();

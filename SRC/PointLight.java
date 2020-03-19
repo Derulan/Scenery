@@ -13,7 +13,7 @@ public class PointLight extends Light
 
     public Vector3 direction(Vector3 other)
     {
-        return Vector3.sub(this.sceneObject.transform.position(), other).normalize();
+        return Vector3.mul(Vector3.sub(this.sceneObject.transform.position(), other).normalize(), -1d);
     }
 
     public void Update(){}

@@ -25,7 +25,7 @@ public class Engine extends JPanel {
 		int width = 640;
 		int height = 480;
 		int time = 0;
-		boolean realtime = false;
+		boolean realtime = true;
 		JFrame frame = new JFrame("Scenery");
 		Engine engine = new Engine();
 		frame.add(engine);
@@ -109,7 +109,7 @@ public class Engine extends JPanel {
 
 
 		//The ONLY camera
-		SceneObject mc = new SceneObject(local, "Main Camera", new Vector3(0, 0, 200));
+		SceneObject mc = new SceneObject(point, "Main Camera", new Vector3(0, 0, 200));
 		Camera comp = mc.AddComponent(Camera.class);
 		comp.resize(width, height);
 		
@@ -117,7 +117,7 @@ public class Engine extends JPanel {
 		{
 			while(true)
 			{
-				//pl.transform.moveTo(new Vector3(0, 200*Math.sin((double)time * 0.05), 100));
+				pl.transform.moveTo(new Vector3(0, 200*Math.sin((double)time * 0.05), 100));
 				mainCameraTexture = comp.render();
 				engine.repaint();
 				Thread.sleep(1);
